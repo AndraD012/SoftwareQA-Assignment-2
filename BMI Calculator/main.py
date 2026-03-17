@@ -1,11 +1,38 @@
 # sources cited here: GeeksForGeeks used for any python questions/refresher help
-
-from calculator import conversions, bmiCalc, sort
 import time
 
 print("Welcome to your Personal BMI Calculator!")
 print("\nAll I need to begin is your height in feet and inches and your weight in pounds.")
 print("Note: Please use only numbers for your input, not any words. (i.e. 5, 10, 128)")
+
+# This is to simplify and compartmentalize all of my calculations for testing
+# ...and because I like how it looks better.
+    
+
+# height to meters & lbs to kg conversions
+def conversions(heightFT, heightIN, weight):
+    heightIN = heightIN + (heightFT * 12)
+    meters = heightIN * 0.025
+    kilos = weight * 0.45
+    return meters, kilos
+
+# get the BMI
+def bmiCalc(meters, kilos):
+    bmi = kilos / (meters * meters)
+    return bmi
+
+# now to sort!
+def sort(bmi):
+    if bmi < 18.5:
+        bmiSort = "Underweight"
+    elif bmi >= 18.5 and bmi <= 24.9:
+        bmiSort = "Normal Weight"
+    elif bmi >= 25 and bmi <= 29.9:
+        bmiSort = "Overweight"
+    elif bmi >= 30:
+        bmiSort = "Obese"
+    
+    return bmiSort
 
 # verification 1
 while True:
@@ -50,3 +77,4 @@ answer = sort(bmi)
 
 print("Finally, your BMI is " + stringBMI + " and you are classified as " + answer)
 print("Have a nice day!")
+
